@@ -30,6 +30,19 @@ describe('createReportPdf', () => {
     expect(pageCount).toBeGreaterThan(1); // Tabelle wird auf Folgeseiten fortgesetzt
   });
 
+  it('funktioniert auch ohne Namen im Kopf', async () => {
+    const blob = createReportPdf({
+      owner: '   ',
+      appName: 'Zeitkontierung',
+      range,
+      summary: { rows: [], totalMinutes: 0 },
+      createdAt: at(2026, 11, 30),
+    });
+    const text = await blob.text();
+    expect(text).toContain('(Projektzeiten)');
+    expect(text).not.toContain('/Author');
+  });
+
   it('benennt die Datei nach dem Zeitraum', () => {
     expect(reportFileName(range)).toBe('Projektzeiten_2026-11-01_bis_2026-11-30.pdf');
   });

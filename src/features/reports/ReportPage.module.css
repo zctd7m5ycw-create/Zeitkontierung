@@ -27,3 +27,9 @@
   color: var(--color-text-secondary);
   text-align: center;
 }
+
+.link {
+  color: var(--color-accent);
+  font-weight: var(--weight-medium);
+  text-decoration: none;
+}

@@ -5,12 +5,15 @@ Alle Daten bleiben ausschließlich auf dem Gerät; es gibt keinen Server und kei
 
 ## Funktionen
 
-| Bereich           | Was es kann                                                                                                         |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------- |
-| **Timer**         | Ein Tipp auf ein Projekt startet die Zeit. Startet man ein anderes Projekt, stoppt das laufende automatisch.        |
-| **Einträge**      | Alle Zeitblöcke nach Tagen, monatsweise. Bearbeiten, nachtragen, löschen, Notiz pro Eintrag.                        |
-| **Auswertung**    | Summen pro Projekt für Woche, Monat oder freien Zeitraum (minutengenau). Export als PDF mit Kopfzeile „Gundermann“. |
-| **Einstellungen** | Projekte anlegen, umbenennen, einfärben, archivieren. Datensicherung als Datei erstellen und wieder einspielen.     |
+| Bereich           | Was es kann                                                                                                                            |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| **Timer**         | Ein Tipp auf ein Projekt startet die Zeit. Startet man ein anderes Projekt, stoppt das laufende automatisch.                           |
+| **Einträge**      | Alle Zeitblöcke nach Tagen, monatsweise. Bearbeiten, nachtragen, löschen, Notiz pro Eintrag.                                           |
+| **Auswertung**    | Summen pro Projekt für Woche, Monat oder freien Zeitraum (minutengenau). Export als PDF mit eigenem Namen im Kopf.                     |
+| **Einstellungen** | Projekte anlegen, umbenennen, einfärben, archivieren. Name für den PDF-Kopf. Datensicherung als Datei erstellen und wieder einspielen. |
+
+Mehrere Personen können die App gleichzeitig nutzen: Jede Person öffnet sie auf ihrem
+eigenen iPhone, und die Daten bleiben getrennt auf dem jeweiligen Gerät.
 
 Weitere Eigenschaften: funktioniert offline, folgt dem Hell-/Dunkelmodus des iPhones,
 weist auf vermutlich vergessene Timer (> 10 Std.) und fällige Sicherungen hin.
@@ -85,7 +88,6 @@ Tests liegen jeweils neben der getesteten Datei (`*.test.ts` / `*.test.tsx`).
 
 | Was                                | Wo                                            |
 | ---------------------------------- | --------------------------------------------- |
-| Name im PDF-Kopf                   | `src/config/appConfig.ts` → `reportOwner`     |
 | Hinweis bei langem Timer (Stunden) | `src/config/appConfig.ts`                     |
 | Erinnerung an Sicherung (Tage)     | `src/config/appConfig.ts`                     |
 | Farben, Abstände, Schriftgrößen    | `src/styles/tokens.css`                       |

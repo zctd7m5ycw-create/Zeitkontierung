@@ -2,7 +2,7 @@
  * Erzeugt den PDF-Bericht: Summen pro Projekt für einen Zeitraum.
  *
  * Aufbau (A4 hoch, schwarz-weiß, gut druckbar):
- *   Name (z. B. „Gundermann“), Titel, Zeitraum und Erstellungsdatum,
+ *   Name (falls in den Einstellungen hinterlegt), Titel, Zeitraum und Erstellungsdatum,
  *   Tabelle „Projekt | Stunden | Dezimal“, Gesamtsumme, Seitenzahlen.
  *
  * Läuft vollständig auf dem Gerät, ohne Server. Verwendet die Standardschrift
@@ -15,6 +15,7 @@ import type { ProjectSummary } from '@/domain/report';
 import type { TimeRange, Timestamp } from '@/domain/types';
 
 export interface ReportPdfInput {
+  /** Name im Kopf; leer = nur der Titel „Projektzeiten“. */
   owner: string;
   appName: string;
   range: TimeRange;
@@ -39,13 +40,14 @@ const RULE: [number, number, number] = [212, 212, 216];
 
 export function createReportPdf(input: ReportPdfInput): Blob {
   const doc = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
+  const owner = input.owner.trim();
   doc.setProperties({
     title: `Projektzeiten ${formatRange(input.range)}`,
-    author: input.owner,
     creator: input.appName,
+    ...(owner ? { author: owner } : {}),
   });
 
-  let y = drawHeader(doc, input);
+  let y = drawHeader(doc, owner, input);
   y = drawTableHeader(doc, y);
 
   for (const row of input.summary.rows) {
@@ -68,19 +70,24 @@ export function reportFileName(range: TimeRange): string {
   return `Projektzeiten_${dayKey(range.start)}_bis_${dayKey(lastDayOf(range))}.pdf`;
 }
 
-function drawHeader(doc: jsPDF, input: ReportPdfInput): number {
+function drawHeader(doc: jsPDF, owner: string, input: ReportPdfInput): number {
   let y = PAGE.marginTop + 4;
 
+  // Mit Name: Name groß, darunter „Projektzeiten“. Ohne Name: nur „Projektzeiten“ groß.
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(20);
   doc.setTextColor(...TEXT);
-  doc.text(input.owner, PAGE.marginX, y);
+  doc.text(owner || 'Projektzeiten', PAGE.marginX, y);
 
-  y += 8;
+  if (owner) {
+    y += 8;
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(12);
+    doc.setTextColor(...MUTED);
+    doc.text('Projektzeiten', PAGE.marginX, y);
+  }
+
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(12);
-  doc.setTextColor(...MUTED);
-  doc.text('Projektzeiten', PAGE.marginX, y);
 
   y += 12;
   doc.setFontSize(10);

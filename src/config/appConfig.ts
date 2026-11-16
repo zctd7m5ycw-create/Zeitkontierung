@@ -6,9 +6,6 @@ import { MS_PER_HOUR } from '@/domain/time';
 export const APP_CONFIG = {
   appName: 'Zeitkontierung',
 
-  /** Name im Kopf des PDF-Berichts. */
-  reportOwner: 'Gundermann',
-
   /** Ab dieser Laufzeit weist die App auf einen vermutlich vergessenen Timer hin. */
   longRunningThresholdMs: 10 * MS_PER_HOUR,
 

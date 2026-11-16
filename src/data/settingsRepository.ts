@@ -8,6 +8,8 @@ import { db } from './db';
 export interface Settings {
   /** Zeitpunkt der letzten erfolgreich erstellten Sicherung. */
   lastBackupAt: Timestamp;
+  /** Name im Kopf des PDF-Berichts (z. B. Person oder Firma). */
+  reportOwnerName: string;
 }
 
 export type SettingKey = keyof Settings;

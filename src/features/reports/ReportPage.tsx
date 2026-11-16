@@ -6,8 +6,10 @@
  * erst beim Öffnen dieser Seite geladen wird.
  */
 import { useId, useMemo, useState } from 'react';
+import { Link } from 'react-router';
+import { ROUTES } from '@/app/routes';
 import { APP_CONFIG } from '@/config/appConfig';
-import { useEntriesInRange, useProjects } from '@/data/hooks';
+import { useEntriesInRange, useProjects, useSetting } from '@/data/hooks';
 import { toDateInputValue } from '@/domain/dateInput';
 import { monthRange, shiftMonth, shiftWeek, weekRange } from '@/domain/dateRange';
 import { overlapsRange, summarizeByProject } from '@/domain/report';
@@ -55,6 +57,7 @@ export default function ReportPage() {
   const range = useMemo(() => resolvePeriod(period), [period]);
   const projects = useProjects();
   const entries = useEntriesInRange(range ?? EMPTY_RANGE);
+  const owner = useSetting('reportOwnerName') ?? '';
 
   const summary = useMemo(
     () => summarizeByProject(entries ?? [], projects ?? [], range ?? EMPTY_RANGE, now),
@@ -73,7 +76,7 @@ export default function ReportPage() {
     try {
       // Synchron erzeugen, damit das Teilen-Menü direkt nach dem Tipp öffnen darf.
       const blob = createReportPdf({
-        owner: APP_CONFIG.reportOwner,
+        owner,
         appName: APP_CONFIG.appName,
         range,
         summary,
@@ -167,7 +170,17 @@ export default function ReportPage() {
               PDF erstellen
             </Button>
             <p className={styles.exportHint}>
-              Enthält die Summen pro Projekt mit Kopfzeile „{APP_CONFIG.reportOwner}“.
+              {owner ? (
+                <>Enthält die Summen pro Projekt mit Kopfzeile „{owner}“.</>
+              ) : (
+                <>
+                  Tipp: Unter{' '}
+                  <Link to={ROUTES.settings} className={styles.link}>
+                    Einstellungen
+                  </Link>{' '}
+                  deinen Namen für den Kopf des PDF eintragen.
+                </>
+              )}
             </p>
           </div>
         </>

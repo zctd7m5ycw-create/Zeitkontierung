@@ -69,7 +69,8 @@ Definiert in `src/domain/types.ts`, gespeichert in IndexedDB (`src/data/db.ts`).
 | `end`       | number \| null | Ende; `null` = Timer läuft |
 | `note`      | string         | Notiz, leer wenn keine     |
 
-**settings**: Schlüssel-Wert-Tabelle, derzeit nur `lastBackupAt`.
+**settings**: Schlüssel-Wert-Tabelle mit `lastBackupAt` (letzte Sicherung) und
+`reportOwnerName` (Name im PDF-Kopf). Einstellungen sind nicht Teil der Datensicherung.
 
 ### Feste Regeln (Invarianten)
 
