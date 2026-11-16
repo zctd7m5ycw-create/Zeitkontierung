@@ -64,6 +64,17 @@ export function formatWeekdayDate(ts: Timestamp): string {
   return weekdayDateFormat.format(ts);
 }
 
+const shortWeekdayDateFormat = new Intl.DateTimeFormat(LOCALE, {
+  weekday: 'short',
+  day: 'numeric',
+  month: 'long',
+});
+
+/** Kurzer Wochentag und Datum, z. B. "Mo., 16. November". */
+export function formatShortWeekdayDate(ts: Timestamp): string {
+  return shortWeekdayDateFormat.format(ts);
+}
+
 /** Monat und Jahr, z. B. "November 2026". */
 export function formatMonthYear(ts: Timestamp): string {
   return monthYearFormat.format(ts);

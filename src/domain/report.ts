@@ -7,6 +7,7 @@
  * Rundung: Jede Projektsumme wird auf ganze Minuten gerundet. Die Gesamtsumme ist
  * die Summe dieser gerundeten Werte, damit Zeilen und Summe im Bericht immer zusammenpassen.
  */
+import { addDays } from './dateRange';
 import { effectiveEnd, toWholeMinutes } from './time';
 import type { Project, ProjectId, TimeEntry, TimeRange, Timestamp } from './types';
 
@@ -70,6 +71,41 @@ export function summarizeByProject(
 
   const totalMinutes = rows.reduce((sum, row) => sum + row.minutes, 0);
   return { rows, totalMinutes };
+}
+
+export interface DaySummary extends ProjectSummary {
+  /** Beginn des Kalendertags (00:00 Uhr lokale Zeit). */
+  day: Timestamp;
+}
+
+/**
+ * Summen pro Kalendertag und Projekt im Zeitraum.
+ *
+ * Einträge über Mitternacht werden auf die beteiligten Tage aufgeteilt.
+ * Tage ohne erfasste Zeit fehlen; der neueste Tag steht vorne.
+ * Gerundet wird pro Tag und Projekt, daher kann die Summe aller Tage
+ * in Einzelfällen um eine Minute von der Gesamtsumme des Zeitraums abweichen.
+ *
+ * @param range Muss auf Tagesgrenzen beginnen (wie alle Zeiträume aus `dateRange.ts`).
+ */
+export function summarizeByDay(
+  entries: readonly TimeEntry[],
+  projects: readonly Project[],
+  range: TimeRange,
+  now: Timestamp,
+): DaySummary[] {
+  const relevant = entries.filter((entry) => overlapsRange(entry, range, now));
+  const days: DaySummary[] = [];
+  for (let day = range.start; day < range.end; day = addDays(day, 1)) {
+    const summary = summarizeByProject(
+      relevant,
+      projects,
+      { start: day, end: addDays(day, 1) },
+      now,
+    );
+    if (summary.totalMinutes > 0) days.push({ day, ...summary });
+  }
+  return days.reverse();
 }
 
 /** Ungerundete Summe in Millisekunden, z. B. für eine sekundengenaue Live-Anzeige. */

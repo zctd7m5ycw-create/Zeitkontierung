@@ -5,12 +5,12 @@ Alle Daten bleiben ausschließlich auf dem Gerät; es gibt keinen Server und kei
 
 ## Funktionen
 
-| Bereich           | Was es kann                                                                                                                            |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| **Timer**         | Ein Tipp auf ein Projekt startet die Zeit. Startet man ein anderes Projekt, stoppt das laufende automatisch.                           |
-| **Einträge**      | Alle Zeitblöcke nach Tagen, monatsweise. Bearbeiten, nachtragen, löschen, Notiz pro Eintrag.                                           |
-| **Auswertung**    | Summen pro Projekt für Woche, Monat oder freien Zeitraum (minutengenau). Export als PDF mit eigenem Namen im Kopf.                     |
-| **Einstellungen** | Projekte anlegen, umbenennen, einfärben, archivieren. Name für den PDF-Kopf. Datensicherung als Datei erstellen und wieder einspielen. |
+| Bereich           | Was es kann                                                                                                                                                  |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Timer**         | Ein Tipp auf ein Projekt startet die Zeit. Startet man ein anderes Projekt, stoppt das laufende automatisch.                                                 |
+| **Einträge**      | Alle Zeitblöcke nach Tagen, monatsweise. Bearbeiten, nachtragen, löschen, Notiz pro Eintrag.                                                                 |
+| **Auswertung**    | Summen für Woche, Monat oder freien Zeitraum (minutengenau), wahlweise pro Projekt oder pro Tag. Export der Projektsummen als PDF mit eigenem Namen im Kopf. |
+| **Einstellungen** | Projekte anlegen, umbenennen, einfärben, archivieren. Name für den PDF-Kopf. Datensicherung als Datei erstellen und wieder einspielen.                       |
 
 Mehrere Personen können die App gleichzeitig nutzen: Jede Person öffnet sie auf ihrem
 eigenen iPhone, und die Daten bleiben getrennt auf dem jeweiligen Gerät.

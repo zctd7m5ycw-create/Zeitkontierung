@@ -11,6 +11,10 @@
   gap: var(--space-3);
 }
 
+.viewSwitch {
+  margin-bottom: var(--space-4);
+}
+
 .notice {
   margin-top: var(--space-4);
 }

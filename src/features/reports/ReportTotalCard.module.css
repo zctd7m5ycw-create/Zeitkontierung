@@ -1,0 +1,23 @@
+.totalCard {
+  margin-bottom: var(--space-4);
+  text-align: center;
+}
+
+.totalLabel {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-secondary);
+}
+
+.totalValue {
+  margin-top: var(--space-1);
+  font-size: 2.5rem;
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.totalDecimal {
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+}

@@ -1,6 +1,6 @@
 /**
- * Seite „Auswertung“: Summen pro Projekt für Woche, Monat oder freien Zeitraum,
- * plus Export als PDF.
+ * Seite „Auswertung“: Summen für Woche, Monat oder freien Zeitraum – wahlweise
+ * pro Projekt oder pro Tag – plus Export der Projektsummen als PDF.
  *
  * Wird per `React.lazy` geladen (siehe App.tsx), damit die PDF-Bibliothek
  * erst beim Öffnen dieser Seite geladen wird.
@@ -12,7 +12,7 @@ import { APP_CONFIG } from '@/config/appConfig';
 import { useEntriesInRange, useProjects, useSetting } from '@/data/hooks';
 import { toDateInputValue } from '@/domain/dateInput';
 import { monthRange, shiftMonth, shiftWeek, weekRange } from '@/domain/dateRange';
-import { overlapsRange, summarizeByProject } from '@/domain/report';
+import { overlapsRange, summarizeByDay, summarizeByProject } from '@/domain/report';
 import type { TimeRange } from '@/domain/types';
 import { useNow } from '@/hooks/useNow';
 import { shareOrDownload } from '@/lib/shareFile';
@@ -31,11 +31,20 @@ import {
   resolvePeriod,
   type PeriodState,
 } from './reportPeriod';
-import { ReportSummary } from './ReportSummary';
+import { DaySummaryList } from './DaySummaryList';
+import { ProjectSummaryList } from './ProjectSummaryList';
+import { ReportTotalCard } from './ReportTotalCard';
 import styles from './ReportPage.module.css';
 
 /** Platzhalter, solange kein gültiger Zeitraum gewählt ist (liefert keine Einträge). */
 const EMPTY_RANGE: TimeRange = { start: 0, end: 0 };
+
+type ResultView = 'projects' | 'days';
+
+const VIEW_OPTIONS: readonly { value: ResultView; label: string }[] = [
+  { value: 'projects', label: 'Projekte' },
+  { value: 'days', label: 'Tage' },
+];
 
 export default function ReportPage() {
   const now = useNow(30_000);
@@ -52,6 +61,7 @@ export default function ReportPage() {
       customTo: toDateInputValue(today),
     };
   });
+  const [view, setView] = useState<ResultView>('projects');
   const [pdfError, setPdfError] = useState<string | null>(null);
 
   const range = useMemo(() => resolvePeriod(period), [period]);
@@ -62,6 +72,12 @@ export default function ReportPage() {
   const summary = useMemo(
     () => summarizeByProject(entries ?? [], projects ?? [], range ?? EMPTY_RANGE, now),
     [entries, projects, range, now],
+  );
+  // Tagesansicht nur berechnen, wenn sie angezeigt wird.
+  const days = useMemo(
+    () =>
+      view === 'days' && range ? summarizeByDay(entries ?? [], projects ?? [], range, now) : [],
+    [view, entries, projects, range, now],
   );
   const includesRunningTimer =
     range !== null &&
@@ -156,7 +172,22 @@ export default function ReportPage() {
 
       {range !== null && summary.rows.length > 0 && (
         <>
-          <ReportSummary summary={summary} />
+          <ReportTotalCard totalMinutes={summary.totalMinutes} />
+
+          <div className={styles.viewSwitch}>
+            <SegmentedControl
+              label="Ansicht"
+              options={VIEW_OPTIONS}
+              value={view}
+              onChange={setView}
+            />
+          </div>
+
+          {view === 'projects' ? (
+            <ProjectSummaryList summary={summary} />
+          ) : (
+            <DaySummaryList days={days} />
+          )}
 
           {includesRunningTimer && (
             <div className={styles.notice}>

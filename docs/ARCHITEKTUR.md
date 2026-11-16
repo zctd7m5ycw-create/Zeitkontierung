@@ -91,6 +91,8 @@ Definiert in `src/domain/types.ts`, gespeichert in IndexedDB (`src/data/db.ts`).
 - **Über Mitternacht / Zeitraumgrenzen:** Die Auswertung zählt nur den Anteil eines
   Eintrags, der im gewählten Zeitraum liegt (`domain/report.ts → overlapMs`).
   In der Liste „Einträge“ erscheint ein Eintrag am Tag seines Beginns mit voller Dauer.
+- **Tagesansicht der Auswertung** (`summarizeByDay`): Summen pro Kalendertag und Projekt,
+  neuester Tag zuerst, Tage ohne Zeiten entfallen.
 - **Rundung:** minutengenau. Jede Projektsumme wird auf ganze Minuten gerundet; die
   Gesamtsumme ist die Summe dieser Werte, damit Zeilen und Summe immer übereinstimmen.
 
