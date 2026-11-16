@@ -1,0 +1,86 @@
+.totalCard {
+  margin-bottom: var(--space-4);
+  text-align: center;
+}
+
+.totalLabel {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-secondary);
+}
+
+.totalValue {
+  margin-top: var(--space-1);
+  font-size: 2.5rem;
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.totalDecimal {
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.row {
+  padding: var(--space-4);
+}
+
+.row + .row {
+  border-top: 1px solid var(--color-border);
+}
+
+.rowHead {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.name {
+  flex: 1;
+  min-width: 0;
+  font-weight: var(--weight-medium);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.archived {
+  font-weight: var(--weight-regular);
+  color: var(--color-text-secondary);
+}
+
+.hours {
+  font-weight: var(--weight-semibold);
+  font-variant-numeric: tabular-nums;
+}
+
+.barTrack {
+  height: 6px;
+  margin-top: var(--space-3);
+  border-radius: var(--radius-full);
+  background: var(--color-surface-muted);
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: var(--color-accent);
+}
+
+.decimal {
+  margin-top: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+}

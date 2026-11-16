@@ -1,0 +1,29 @@
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.customRange {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.notice {
+  margin-top: var(--space-4);
+}
+
+.export {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.exportHint {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  text-align: center;
+}

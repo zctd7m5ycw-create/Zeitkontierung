@@ -1,0 +1,27 @@
+.picker {
+  display: grid;
+  grid-template-columns: repeat(4, var(--touch-target));
+  gap: var(--space-4) var(--space-6);
+}
+
+.swatch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--touch-target);
+  height: var(--touch-target);
+  border: none;
+  border-radius: var(--radius-full);
+  color: #ffffff;
+  transition: transform var(--duration-fast) ease;
+}
+
+.swatch:active {
+  transform: scale(0.94);
+}
+
+.selected {
+  box-shadow:
+    0 0 0 3px var(--color-surface),
+    0 0 0 5px var(--color-text);
+}

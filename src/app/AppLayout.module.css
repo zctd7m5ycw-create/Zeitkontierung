@@ -1,0 +1,11 @@
+.shell {
+  min-height: 100dvh;
+}
+
+.content {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: calc(var(--safe-top) + var(--space-3)) calc(var(--safe-right) + var(--space-4))
+    calc(var(--safe-bottom) + var(--tabbar-height) + var(--space-8))
+    calc(var(--safe-left) + var(--space-4));
+}

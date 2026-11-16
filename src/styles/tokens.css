@@ -1,0 +1,134 @@
+/*
+ * Design-Tokens: alle Farben, Abstände, Radien und Schriftgrößen an einer Stelle.
+ * Komponenten verwenden ausschließlich diese Variablen, keine festen Werte.
+ * Der Dunkelmodus folgt automatisch der iPhone-Einstellung.
+ */
+
+:root {
+  color-scheme: light dark;
+
+  /* Schrift: Systemschrift des Geräts (auf dem iPhone San Francisco) */
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    sans-serif;
+
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-md: 1rem; /* 16px – Mindestgröße für Eingabefelder, sonst zoomt iOS */
+  --text-lg: 1.125rem; /* 18px */
+  --text-xl: 1.375rem; /* 22px */
+  --text-2xl: 1.875rem; /* 30px */
+  --text-display: 3rem; /* 48px – laufende Uhr */
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* Abstände (4er-Raster) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+  --radius-full: 999px;
+
+  /* Mindestgröße für Tippflächen nach Apple-Richtlinien */
+  --touch-target: 44px;
+  --tabbar-height: 56px;
+  --content-max-width: 640px;
+
+  --duration-fast: 120ms;
+  --duration-normal: 220ms;
+  --easing: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* Sichere Bereiche (Notch, Home-Indikator) */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+
+  /* ---------- Farben: hell ---------- */
+  --color-bg: #f4f4f5;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f4f4f5;
+  --color-surface-pressed: #ececee;
+  --color-border: #e4e4e7;
+  --color-border-strong: #d4d4d8;
+
+  --color-text: #18181b;
+  --color-text-secondary: #6b6b74;
+  --color-text-tertiary: #a1a1aa;
+
+  --color-accent: #2f62d6;
+  --color-accent-pressed: #2552b8;
+  --color-accent-soft: #eaf0fc;
+  --color-on-accent: #ffffff;
+
+  --color-danger: #c93a3c;
+  --color-danger-soft: #fcecec;
+  --color-warning: #9a5b07;
+  --color-warning-soft: #fdf3e2;
+  --color-success: #2e7d4f;
+  --color-success-soft: #e8f5ed;
+
+  --color-backdrop: rgb(0 0 0 / 0.32);
+  --color-tabbar: rgb(255 255 255 / 0.82);
+
+  /* Projektfarben (gedeckt) – Namen siehe src/domain/projectColors.ts */
+  --project-slate: #6b7686;
+  --project-blue: #4f74c9;
+  --project-teal: #2f8a86;
+  --project-green: #4d8f5f;
+  --project-amber: #c09027;
+  --project-orange: #cd7140;
+  --project-rose: #c45c78;
+  --project-violet: #7b66c2;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #111113;
+    --color-surface: #1c1c1f;
+    --color-surface-muted: #26262a;
+    --color-surface-pressed: #2c2c31;
+    --color-border: #2e2e33;
+    --color-border-strong: #3f3f46;
+
+    --color-text: #f4f4f5;
+    --color-text-secondary: #a1a1aa;
+    --color-text-tertiary: #6b6b74;
+
+    --color-accent: #4a78e6;
+    --color-accent-pressed: #3d68d0;
+    --color-accent-soft: #1b2847;
+    --color-on-accent: #ffffff;
+
+    --color-danger: #f0696b;
+    --color-danger-soft: #3a1d1e;
+    --color-warning: #f1b25a;
+    --color-warning-soft: #362813;
+    --color-success: #5ec08a;
+    --color-success-soft: #15301f;
+
+    --color-backdrop: rgb(0 0 0 / 0.55);
+    --color-tabbar: rgb(28 28 31 / 0.82);
+
+    --project-slate: #8d97a6;
+    --project-blue: #7193e0;
+    --project-teal: #4fb0aa;
+    --project-green: #6db37f;
+    --project-amber: #d9ad4a;
+    --project-orange: #e08d5f;
+    --project-rose: #dc7d97;
+    --project-violet: #9c88dc;
+  }
+}

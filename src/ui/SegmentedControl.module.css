@@ -1,0 +1,25 @@
+.control {
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-pressed);
+}
+
+.segment {
+  flex: 1;
+  min-height: 36px;
+  border: none;
+  border-radius: calc(var(--radius-md) - 3px);
+  background: transparent;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-secondary);
+  transition: background-color var(--duration-fast) ease;
+}
+
+.selected {
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.08);
+}

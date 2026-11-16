@@ -1,0 +1,15 @@
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: var(--color-surface-muted);
+  color: var(--color-text);
+}
+
+.toggleRunning {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}

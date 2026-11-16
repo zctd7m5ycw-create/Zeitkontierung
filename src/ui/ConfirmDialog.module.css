@@ -1,0 +1,8 @@
+.message {
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.message p + p {
+  margin-top: var(--space-3);
+}

@@ -1,0 +1,18 @@
+.timeRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+}
+
+@media (min-width: 520px) {
+  .timeRow {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+  }
+}
+
+.deleteArea {
+  margin-top: var(--space-8);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+}

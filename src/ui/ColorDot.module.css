@@ -1,0 +1,15 @@
+.dot {
+  display: inline-block;
+  flex-shrink: 0;
+  border-radius: var(--radius-full);
+}
+
+.sm {
+  width: 10px;
+  height: 10px;
+}
+
+.md {
+  width: 14px;
+  height: 14px;
+}
