@@ -33,9 +33,9 @@ describe('DaySummaryList', () => {
       'Fr., 13. November',
     ]);
     const monday = within(sections[0]!);
-    expect(monday.getByText('6:40 h')).toBeInTheDocument();
+    expect(monday.getByText('6,67 h')).toBeInTheDocument();
     expect(monday.getByText('Alpha')).toBeInTheDocument();
-    expect(monday.getByText('4:15')).toBeInTheDocument();
-    expect(monday.getByText('2:25')).toBeInTheDocument();
+    expect(monday.getByText('4,25 h')).toBeInTheDocument();
+    expect(monday.getByText('2,42 h')).toBeInTheDocument();
   });
 });

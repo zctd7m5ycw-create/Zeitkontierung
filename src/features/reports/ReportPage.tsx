@@ -1,6 +1,6 @@
 /**
  * Seite „Auswertung“: Summen für Woche, Monat oder freien Zeitraum – wahlweise
- * pro Projekt oder pro Tag – plus Export der Projektsummen als PDF.
+ * pro Projekt oder pro Tag, in Dezimalstunden – plus Export der Projektsummen als PDF.
  *
  * Wird per `React.lazy` geladen (siehe App.tsx), damit die PDF-Bibliothek
  * erst beim Öffnen dieser Seite geladen wird.

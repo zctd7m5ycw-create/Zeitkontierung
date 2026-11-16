@@ -1,7 +1,7 @@
 /**
- * Ansicht „Projekte“: eine Zeile pro Projekt mit Summe und Anteilsbalken.
+ * Ansicht „Projekte“: eine Zeile pro Projekt mit Summe (Dezimalstunden) und Anteilsbalken.
  */
-import { formatDecimalHours, formatMinutes } from '@/domain/format';
+import { formatDecimalHours } from '@/domain/format';
 import type { ProjectSummary } from '@/domain/report';
 import { ColorDot } from '@/ui/ColorDot';
 import styles from './ProjectSummaryList.module.css';
@@ -23,7 +23,7 @@ export function ProjectSummaryList({ summary }: ProjectSummaryListProps) {
               {row.project?.name ?? 'Unbekanntes Projekt'}
               {row.project?.archived && <span className={styles.archived}> · archiviert</span>}
             </span>
-            <span className={styles.hours}>{formatMinutes(row.minutes)} h</span>
+            <span className={styles.hours}>{formatDecimalHours(row.minutes)} h</span>
           </div>
           <div className={styles.barTrack} aria-hidden="true">
             <div
@@ -34,7 +34,6 @@ export function ProjectSummaryList({ summary }: ProjectSummaryListProps) {
               }}
             />
           </div>
-          <p className={styles.decimal}>{formatDecimalHours(row.minutes)} Stunden</p>
         </li>
       ))}
     </ul>

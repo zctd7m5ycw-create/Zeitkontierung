@@ -16,8 +16,3 @@
   letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
 }
-
-.totalDecimal {
-  color: var(--color-text-secondary);
-  font-variant-numeric: tabular-nums;
-}

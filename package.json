@@ -1,7 +1,7 @@
 {
   "name": "zeitkontierung",
   "private": true,
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Zeiterfassung pro Projekt als installierbare Web-App für das iPhone. Alle Daten bleiben lokal auf dem Gerät.",
   "type": "module",
   "engines": {

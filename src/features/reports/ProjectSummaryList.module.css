@@ -53,10 +53,3 @@
   border-radius: var(--radius-full);
   background: var(--color-accent);
 }
-
-.decimal {
-  margin-top: var(--space-2);
-  font-size: var(--text-sm);
-  color: var(--color-text-secondary);
-  font-variant-numeric: tabular-nums;
-}
